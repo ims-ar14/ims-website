@@ -1,75 +1,367 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Al-Idrak Money Saving | IMS</title>
+  <meta name="description" content="Al-Idrak Money Saving (IMS) — সঞ্চয় থেকে সমৃদ্ধি।">
+  <title>IMS | Al-Idrak Money Saving</title>
   <style>
+    :root {
+      --green: #176b45;
+      --dark: #103c2b;
+      --light: #eff7f1;
+      --gold: #e7bd62;
+      --white: #ffffff;
+      --muted: #64756b;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f3f8f4;
-      color: #183c2b;
-      text-align: center;
+      font-family: Arial, "Noto Sans Bengali", sans-serif;
+      background: #f7faf7;
+      color: var(--dark);
+      line-height: 1.7;
     }
-    header {
-      background: #176b45;
+
+    a { text-decoration: none; }
+
+    .topbar {
+      background: var(--dark);
       color: white;
-      padding: 28px 12px;
+      text-align: center;
+      padding: 7px 12px;
+      font-size: 13px;
     }
-    header h1 { margin: 0 0 10px; }
-    main { padding: 24px 16px; }
+
+    header {
+      background: white;
+      padding: 15px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #e3ece5;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green);
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--green);
+      color: white;
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .brand h1 {
+      font-size: 17px;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .brand p {
+      font-size: 11px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .login {
+      background: var(--green);
+      color: white;
+      padding: 9px 13px;
+      border-radius: 8px;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      padding: 55px 20px;
+      text-align: center;
+      background: linear-gradient(145deg, #e7f3e9, #ffffff);
+    }
+
+    .tag {
+      display: inline-block;
+      color: var(--green);
+      background: #d8ebdc;
+      padding: 5px 13px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    .hero h2 {
+      font-size: clamp(29px, 7vw, 44px);
+      line-height: 1.35;
+      margin: 18px auto 12px;
+      max-width: 650px;
+    }
+
+    .hero h2 span { color: var(--green); }
+
+    .hero p {
+      max-width: 510px;
+      margin: 0 auto 24px;
+      color: #52675a;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 9px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .primary { background: var(--green); color: white; }
+    .secondary { background: white; color: var(--green); border: 1px solid #bdd5c3; }
+
+    main section {
+      padding: 36px 18px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section-title { text-align: center; margin-bottom: 24px; }
+    .section-title h2 { font-size: 25px; margin: 0 0 6px; }
+    .section-title p { color: var(--muted); margin: 0; font-size: 14px; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
     .card {
       background: white;
-      padding: 22px;
-      margin: 16px auto;
-      max-width: 420px;
+      border: 1px solid #e0ebe2;
       border-radius: 14px;
-      box-shadow: 0 2px 10px #00000012;
+      padding: 21px;
     }
-    .button {
-      display: inline-block;
-      background: #176b45;
+
+    .symbol {
+      width: 43px;
+      height: 43px;
+      border-radius: 12px;
+      background: var(--light);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+    }
+
+    .card h3 { margin: 13px 0 7px; font-size: 18px; }
+    .card p { color: var(--muted); font-size: 14px; margin: 0; }
+
+    .about {
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      border: 1px solid #e0ebe2;
+    }
+
+    .notice {
+      background: #fff8e8;
+      border: 1px solid #f1dfb4;
+      padding: 14px;
+      border-radius: 10px;
+      color: #6c5525;
+      font-size: 13px;
+      margin-top: 18px;
+    }
+
+    .contact {
+      background: var(--dark);
       color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      margin-top: 8px;
+      text-align: center;
+      border-radius: 16px;
+      padding: 28px 18px;
     }
+
+    .contact p { color: #d7e8dc; }
+    .contact a { color: white; }
+
     footer {
-      padding: 20px;
-      background: #e1eee5;
-      font-size: 14px;
+      background: #092c1e;
+      color: #d9e7dd;
+      padding: 22px 15px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .bottom-nav {
+      display: none;
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 12px; }
+      .brand h1 { font-size: 14px; }
+      .brand p { font-size: 10px; }
+      .logo { width: 42px; height: 42px; }
+      .login { padding: 8px 10px; }
+      .hero { padding: 43px 17px; }
+      main section { padding: 29px 15px; }
     }
   </style>
 </head>
+
 <body>
+  <div class="topbar">
+    Al-Idrak Foundation-এর অধীনে একটি সঞ্চয় উদ্যোগ
+  </div>
+
   <header>
-    <h1>IMS</h1>
-    <p>Al-Idrak Money Saving</p>
-    <p>সঞ্চয় থেকে সমৃদ্ধি</p>
+    <a class="brand" href="#home" aria-label="IMS হোম">
+      <div class="logo">IMS</div>
+      <div>
+        <h1>Al-Idrak Money Saving</h1>
+        <p>সঞ্চয় থেকে সমৃদ্ধি</p>
+      </div>
+    </a>
+    <a class="login" href="#member">সদস্য লগইন</a>
   </header>
 
+  <div class="hero" id="home">
+    <span class="tag">IMS · সঞ্চয় উদ্যোগ</span>
+    <h2>সঞ্চয়ের অভ্যাসে <span>সমৃদ্ধির পথে</span></h2>
+    <p>
+      পরিকল্পিত সঞ্চয়, স্বচ্ছ হিসাব এবং দায়িত্বশীল
+      আর্থিক ব্যবস্থাপনার জন্য IMS-এর সঙ্গে থাকুন।
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="#member">সদস্য সেবা</a>
+      <a class="btn secondary" href="#about">আমাদের সম্পর্কে</a>
+    </div>
+  </div>
+
   <main>
-    <div class="card">
-      <h2>আমাদের পরিচিতি</h2>
-      <p>আল-ইদরাক ফাউন্ডেশনের অধীনে একটি সঞ্চয় উদ্যোগ।</p>
-    </div>
+    <section id="services">
+      <div class="section-title">
+        <h2>আমাদের সেবাসমূহ</h2>
+        <p>সঞ্চয় ব্যবস্থাপনার জন্য প্রয়োজনীয় সেবা</p>
+      </div>
 
-    <div class="card">
-      <h2>সদস্য লগইন</h2>
-      <p>সদস্যদের জন্য অনলাইন সেবা শিগগিরই চালু হবে।</p>
-    </div>
+      <div class="cards">
+        <article class="card">
+          <div class="symbol">▤</div>
+          <h3>সঞ্চয় হিসাব</h3>
+          <p>নির্ধারিত নীতিমালা অনুযায়ী সঞ্চয় হিসাব পরিচালনার ব্যবস্থা।</p>
+        </article>
 
-    <div class="card">
-      <h2>নতুন সদস্য</h2>
-      <p>নতুন অ্যাকাউন্ট খোলার ব্যবস্থা প্রস্তুত করা হচ্ছে।</p>
-    </div>
+        <article class="card">
+          <div class="symbol">↗</div>
+          <h3>লেনদেনের বিবরণ</h3>
+          <p>জমা, উত্তোলন ও হিসাবের ইতিহাস দেখার সুবিধা তৈরির পরিকল্পনা।</p>
+        </article>
+
+        <article class="card">
+          <div class="symbol">▣</div>
+          <h3>রসিদ ও হিসাব</h3>
+          <p>লেনদেনের প্রমাণ এবং হিসাবের রেকর্ড সংরক্ষণের ব্যবস্থা।</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="accounts">
+      <div class="section-title">
+        <h2>সঞ্চয় হিসাবের ধরন</h2>
+        <p>বিস্তারিত জানতে প্রতিষ্ঠানের অনুমোদিত নীতিমালা দেখুন</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="symbol">◷</div>
+          <h3>FD — নির্দিষ্ট মেয়াদি সঞ্চয়</h3>
+          <p>নির্ধারিত মেয়াদ ও প্রযোজ্য শর্ত অনুযায়ী পরিচালিত সঞ্চয় হিসাব।</p>
+        </article>
+
+        <article class="card">
+          <div class="symbol">▤</div>
+          <h3>CD — সঞ্চয় হিসাব</h3>
+          <p>প্রযোজ্য নিয়ম ও শর্ত অনুযায়ী সঞ্চয় জমা রাখার ব্যবস্থা।</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-title">
+        <h2>IMS সম্পর্কে</h2>
+      </div>
+      <div class="about">
+        <p>
+          <strong>Al-Idrak Money Saving (IMS)</strong> হলো
+          Al-Idrak Foundation-এর অধীনে পরিচালিত একটি সঞ্চয় উদ্যোগ।
+          এর লক্ষ্য হলো সঞ্চয় ব্যবস্থাপনায় স্বচ্ছতা, দায়িত্বশীলতা
+          এবং সুশৃঙ্খল হিসাব সংরক্ষণে সহায়তা করা।
+        </p>
+        <p>
+          হিসাব পরিচালনা ও মুনাফা বণ্টন প্রতিষ্ঠানের অনুমোদিত
+          নীতিমালা এবং প্রযোজ্য শরিয়াহ নীতির আলোকে নির্ধারিত হবে।
+        </p>
+      </div>
+    </section>
+
+    <section id="member">
+      <div class="section-title">
+        <h2>সদস্য সেবা</h2>
+        <p>সদস্যদের অনলাইন সেবা পর্যায়ক্রমে চালু করা হবে</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="symbol">♙</div>
+          <h3>সদস্য লগইন</h3>
+          <p>নিজের হিসাব ও লেনদেন দেখার সুবিধা এখানে যুক্ত হবে।</p>
+          <a class="btn primary" href="#contact">সেবা সম্পর্কে জানুন</a>
+        </article>
+
+        <article class="card">
+          <div class="symbol">＋</div>
+          <h3>নতুন সদস্য আবেদন</h3>
+          <p>নতুন সদস্যের আবেদন গ্রহণের ব্যবস্থা এখানে যুক্ত হবে।</p>
+          <a class="btn secondary" href="#contact">যোগাযোগ করুন</a>
+        </article>
+      </div>
+
+      <div class="notice">
+        নোট: সদস্য লগইন, অনলাইন আবেদন এবং প্রকৃত আর্থিক লেনদেনের
+        ব্যবস্থা এখনো চালু হয়নি। এগুলো চালুর আগে নিরাপত্তা যাচাই করা হবে।
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact">
+        <h2>যোগাযোগ</h2>
+        <p>Al-Idrak Money Saving (IMS)</p>
+        <p>Al-Jamiah As-Salafiya, Dangipara, Paba, Rajshahi</p>
+        <p><a href="tel:01625360426">01625360426</a></p>
+      </div>
+    </section>
   </main>
 
   <footer>
     <p>Al-Idrak Money Saving (IMS)</p>
-    <p>যোগাযোগ: 01625360426</p>
+    <p>সঞ্চয় থেকে সমৃদ্ধি</p>
+    <p>© IMS · সর্বস্বত্ব সংরক্ষিত</p>
   </footer>
 </body>
 </html>
